@@ -87,7 +87,7 @@ body {
 
 .buttonContainer {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: left;
   gap: 1rem;
   /* outline: 1px solid red; */
