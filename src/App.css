@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
+body {
+  box-sizing: border-box;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.page {
+  position: absolute;
+  background-color: black;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+  margin: 2rem auto;
+  width: min(80%, 30rem);
+  height: 90%;
+  border-radius: 5px;
+  overflow: auto;
+  padding: 15px;
+  outline: 1px solid red;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.dnd-list {
+  display: flex;
+  flex-direction: row;
+  height: 35px;
+  margin-bottom: 10px;
+}
+
+.input-item {
+  position: relative;
+  height: 100%;
+  flex-basis: 85%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-left: auto;
+  margin-bottom: 10px;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: move;
+  padding-left: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.over {
+  transform: scale(1.01);
+  border: 1px dashed #eee;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.addButton {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  line-height: 26px;
+  border: none;
+  color: black;
+  border-radius: 50%;
+  font-size: 24px;
+}
+
+.delButton {
+  display: flex;
+  align-items: center;
+  color: darkgrey;
+  margin-left: 10px;
+  height: 37px;
+  width: 30px;
+  font-size: 20px;
+  font-weight: bolder;
+  cursor: pointer;
 }
