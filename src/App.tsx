@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-
 const App = () => {
-  let list = [
+  const names = [
     "Anja",
     "Veselina",
     "Konstantin",
@@ -14,9 +13,21 @@ const App = () => {
     "Jay",
     "Jan",
   ];
+
+  if (localStorage.getItem("names") === null) {
+    localStorage.setItem("names", JSON.stringify(names));
+  }
+
   let sourceElement: { id: string } | null = null;
 
-  const [sortedList, setSortedList] = React.useState(list);
+  const [sortedList, setSortedList] = useState<string[]>(
+    JSON.parse(localStorage.getItem("names")!) || names
+  );
+  const [isEdit, setIsEdit] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("names", JSON.stringify(sortedList));
+  }, [sortedList]);
 
   /* add a new entry at the end of the list.  */
   const newLine = () => {
@@ -146,11 +157,14 @@ const App = () => {
           onDragEnd={handleDragEnd}
           onChange={handleChange}
           placeholder="Enter text here"
-          value={sortedList[i]}
+          value={`${i + 1} ${item}`}
+          readOnly={!isEdit && true}
         />
-        <div id={i.toString()} className="delButton" onClick={handleDelete}>
-          X
-        </div>
+        {isEdit && (
+          <div id={i.toString()} className="delButton" onClick={handleDelete}>
+            X
+          </div>
+        )}
       </div>
     ));
   };
@@ -162,9 +176,16 @@ const App = () => {
       <div className="container">
         <h1 style={{ color: "white", textAlign: "center" }}>SCRUM Order</h1>
         {listItems()}
-        <button className="addButton" onClick={() => newLine()}>
-          +
-        </button>
+        <div className="buttonContainer">
+          {isEdit && (
+            <button className="addButton" onClick={() => newLine()}>
+              +
+            </button>
+          )}
+          <button className="addButton" onClick={() => setIsEdit(!isEdit)}>
+            {isEdit ? "View" : "Edit"}
+          </button>
+        </div>
       </div>
     </div>
   );

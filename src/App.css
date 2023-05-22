@@ -13,13 +13,14 @@ body {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 2rem auto;
-  width: min(80%, 30rem);
   height: 90%;
   border-radius: 5px;
   overflow: auto;
   padding: 15px;
-  outline: 1px solid red;
 }
 
 .dnd-list {
@@ -39,12 +40,20 @@ body {
   justify-content: center;
   margin-left: auto;
   margin-bottom: 10px;
-  font-size: calc(10px + 2vmin);
+  font-size: 2rem;
   color: black;
   border: none;
-  border-radius: 5px;
+  border-radius: 2px;
   cursor: move;
-  padding-left: 10px;
+  padding-left: 20px;
+  transition: all 0.3s;
+}
+
+.input-item:hover {
+  background-color: black;
+  color: #eee;
+  transform: scale(1.125);
+  outline: 1px solid #eee;
 }
 
 .over {
@@ -59,18 +68,27 @@ body {
   line-height: 26px;
   border: none;
   color: black;
-  border-radius: 50%;
+  border-radius: 5px;
   font-size: 24px;
+  cursor: pointer;
 }
 
 .delButton {
   display: flex;
   align-items: center;
-  color: darkgrey;
+  color: rgba(243, 52, 52, 0.767);
   margin-left: 10px;
   height: 37px;
   width: 30px;
   font-size: 20px;
   font-weight: bolder;
   cursor: pointer;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: start;
+  justify-content: left;
+  gap: 1rem;
+  /* outline: 1px solid red; */
 }
